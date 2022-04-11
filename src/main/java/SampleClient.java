@@ -38,6 +38,13 @@ public class SampleClient {
 
     }
 
+    /**
+     * Search lastnames from IGenericClient in a loop
+     * @param client - IGenericClient
+     * @param lastnames - List<String> lastnames
+     * @param isCacheDisabled - flag to enable/disable the cache
+     * @return average time taken for all the client calls
+     */
     protected double searchSurnameList(IGenericClient client, List<String> lastnames, boolean isCacheDisabled){
         IClientInterceptorImpl iClientInterceptor = new IClientInterceptorImpl();
         client.registerInterceptor(iClientInterceptor);
@@ -61,6 +68,11 @@ public class SampleClient {
         return averageTime1;
     }
 
+    /**
+     * Get CacheControlDirective to enable/disable the cache
+     * @param isCacheDisabled flag to enable/disable the cache
+     * @return CacheControlDirective
+     */
     protected CacheControlDirective getCacheControlDirective(boolean isCacheDisabled){
         CacheControlDirective cacheControlDirective = new CacheControlDirective();
         cacheControlDirective.setNoCache(isCacheDisabled);

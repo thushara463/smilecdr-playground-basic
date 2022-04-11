@@ -7,6 +7,10 @@ import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Intercept calls to the Client and record time consumed for each request
+ * @author thushara
+ */
 public class IClientInterceptorImpl implements IClientInterceptor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IClientInterceptorImpl.class);
@@ -29,6 +33,10 @@ public class IClientInterceptorImpl implements IClientInterceptor {
         //LOGGER.info("Time taken for the request is :{}", iHttpResponse.getRequestStopWatch().toString());
     }
 
+    /**
+     * Calculate average response time
+     * @return average request time in double
+     */
     public double getAverageResponseTime(){
         return totalRequestCount.get() != 0 ? (totalResponseTime.get()/totalRequestCount.get()) : 0;
     }
